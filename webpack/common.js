@@ -1,7 +1,8 @@
 const path = require('path');
+const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = {
+const common = {
   target: 'web',
   entry: './src/index.ts',
   output: {
@@ -30,15 +31,15 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        include: [
-          path.resolve(__dirname, '../node_modules/weapp-polyfill')
-        ],
         loader: 'babel-loader',
         query: {
           presets: ['@babel/preset-env']
         }
       }
     ]
+  },
+  node: {
+    fs: 'empty'
   },
   optimization: {
     minimizer: [
@@ -50,7 +51,7 @@ module.exports = {
             // 在UglifyJs删除没有用到的代码时不输出警告
             warnings: false,
             // 删除所有的 `console` 语句，可以兼容ie浏览器
-            drop_console: true,
+            // drop_console: true,
             // 内嵌定义了但是只用到一次的变量
             collapse_vars: true,
             // 提取出出现多次但是没有定义成变量去引用的静态值
@@ -67,3 +68,19 @@ module.exports = {
     ]
   }
 };
+
+const config = merge(common, {
+  mode: 'none',
+  output: {
+    filename: 'inspirecloud-test.js'
+  }
+});
+
+const configMin = merge(common, {
+  mode: 'production',
+  output: {
+    filename: 'inspirecloud-test.min.js'
+  }
+});
+
+module.exports = [config, configMin];

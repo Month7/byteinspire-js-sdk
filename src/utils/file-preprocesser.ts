@@ -1,29 +1,11 @@
-import fs from 'fs';
-import base64Arraybuffer from 'base64-arraybuffer';
+import { isBrowser, isMiniProgram } from './judge-platform';
 
-export default async function (file: any) {
-  try {
-    // 可以接收 Base64 字符串
-    if (typeof file === 'string') {
-      return base64Arraybuffer.decode(file);
-    }
-
-    // 可以接收带 path 的对象
-    if (file && file.path) {
-      const f = fs.readFileSync(file.path);
-      return f.buffer.slice(f.byteOffset, f.byteOffset + f.byteLength);
-    }
-
-    // 可以接收二进制数组 Uint8Array
-    if (file instanceof Uint8Array) {
-      return file.buffer.slice(
-        file.byteOffset,
-        file.byteOffset + file.byteLength
-      );
-    }
-
-    throw new Error('Not support for this file object');
-  } catch (error) {
-    throw error;
-  }
+let filePreprocesser: (file: any) => any = () => null;
+if (isMiniProgram) {
+  filePreprocesser = require('./file-preprocesser-mp').default;
+} else if (isBrowser) {
+  filePreprocesser = require('./file-preprocesser-browser').default;
+} else {
+  filePreprocesser = require('./file-preprocesser-node').default;
 }
+export default filePreprocesser;

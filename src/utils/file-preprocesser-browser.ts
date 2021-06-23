@@ -43,7 +43,6 @@ export default async function (file: any) {
     if (file instanceof ArrayBuffer) {
       return file;
     }
-
     throw new Error('Not support for this file object');
   } catch (error) {
     throw error;

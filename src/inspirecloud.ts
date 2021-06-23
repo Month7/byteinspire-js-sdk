@@ -1,8 +1,12 @@
-import { CLIENT_VERSION_HEADER } from './const';
-import request from './utils/request';
-import { AxiosRequestConfig, AxiosInstance } from 'axios';
-import { getBaseURL } from './utils/utils';
+import { CLIENT_VERSION_HEADER, USER_SESSION_KEY_V2 } from './const';
+import Request from './utils/request';
+import storage from './utils/storage';
+import { AxiosRequestConfig } from 'axios';
+import { getLocalSessionKey, generateSession, getBaseURL } from './utils/utils';
 import FileModule from './file';
+import UserModule from './user';
+import MiniProgramUserModule from './adapter/miniProgram/user';
+import BrowserUserModule from './adapter/browser/user';
 
 const { version } = require('@package/../../package.json');
 
@@ -22,11 +26,15 @@ export interface IInspireCloud {}
 export default class InspireCloud {
   public configs: Config;
 
+  public localSessionKey: string;
+
   public version: string;
 
-  public httpInstance: AxiosInstance;
+  public httpInstance: Request;
 
   public file: FileModule;
+
+  public user: MiniProgramUserModule | BrowserUserModule;
 
   constructor(configs: Config) {
     if (!configs.serviceId) {
@@ -43,17 +51,27 @@ export default class InspireCloud {
     };
 
     this.version = version;
+    this.localSessionKey = getLocalSessionKey(configs.serviceId);
 
-    this.httpInstance = request.create({
-      baseURL: this.configs.baseURL,
+    let sessionToken = storage.getItem(this.localSessionKey);
+
+    if (!sessionToken) {
+      sessionToken = generateSession();
+      storage.setItem(this.localSessionKey, sessionToken);
+    }
+
+    this.httpInstance = new Request({
+      baseURL: this.configs.baseURL as string,
       timeout: 30 * 1000,
       headers: {
         'Content-Type': 'application/json',
-        [CLIENT_VERSION_HEADER]: version
+        [CLIENT_VERSION_HEADER]: version,
+        [USER_SESSION_KEY_V2]: sessionToken
       }
     });
 
     this.file = new FileModule(this);
+    this.user = new UserModule(this);
   }
 
   public async run(

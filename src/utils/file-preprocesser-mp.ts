@@ -1,7 +1,5 @@
 import base64Arraybuffer from 'base64-arraybuffer';
 
-declare const wx: any;
-
 export default async function (file: any) {
   try {
     // 可以接收 Base64 字符串
@@ -11,7 +9,7 @@ export default async function (file: any) {
 
     // 可以接收带 path 的对象
     if (file && file.path) {
-      return wx.getFileSystemManager().readFileSync(file.path);
+      return file;
     }
 
     if (file instanceof ArrayBuffer) {

@@ -17,6 +17,8 @@ module.exports = {
     'no-unused-vars': 0,
     '@typescript-eslint/no-unused-vars': 'error',
     'global-require': 0,
-    'no-useless-catch': 0
+    'no-useless-catch': 0,
+    'class-methods-use-this': 0,
+    'no-shadow': 0
   }
 };

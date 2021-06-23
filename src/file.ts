@@ -1,4 +1,3 @@
-import base64Arraybuffer from 'base64-arraybuffer';
 import { getType } from 'mime';
 
 import Module from './module';
@@ -39,11 +38,10 @@ export default class FileModule extends Module {
       throw new Error('Please specify token to invoke upload');
     }
 
-    let data: ArrayBuffer | string;
+    let data: ArrayBuffer | string | { path: string };
 
     try {
       data = await filePreprocesser(file);
-
       if ((data as ArrayBuffer).byteLength > MAX_FILE_SIZE) {
         throw new Error('Exceed max file size 10 MB');
       }
@@ -55,18 +53,13 @@ export default class FileModule extends Module {
         'x-ic-client-upload-token': token
       };
 
-      if (typeof wx !== 'undefined' || typeof tt !== 'undefined') {
-        headers['x-tt-base64-encoded'] = 'true';
-        data = base64Arraybuffer.encode(data as ArrayBuffer);
-      }
-
-      const res = await this.inspirecloud.httpInstance.request({
+      const res = await this.inspirecloud.httpInstance.upload({
         headers,
         data,
         url: '/--file',
-        method: 'POST'
+        method: 'POST',
+        filePath: ((data as unknown) as { path: string })?.path
       });
-
       return res.data;
     } catch (error) {
       throw error;
