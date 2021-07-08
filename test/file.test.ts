@@ -9,10 +9,7 @@ const inspirecloud = new InspireCloud({
 });
 const token = 'ea46d469-fb64-4583-b69d-9f2fc7e7e3a2';
 
-/* global TEST_ENV */
-declare global {
-  const TEST_ENV: string;
-}
+declare const TEST_ENV: string;
 
 describe('File', () => {
   test('ok test', async () => {

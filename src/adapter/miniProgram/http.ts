@@ -54,6 +54,7 @@ export default class Request {
     return new Promise((resolve, reject) => {
       adapter.request({
         ...options,
+        header: options.headers,
         success(res: Response) {
           resolve(res);
         },

@@ -18,4 +18,16 @@ describe('User', () => {
       expect(session).not.toBe(undefined);
     }
   });
+  test('loginByOauth', async () => {
+    const inspirecloud = new InspireCloud({
+      serviceId: VALID_SERVICE_ID,
+      baseURL: HOST_PATH
+    });
+    try {
+      const res = await inspirecloud.user.logInByOAuth({ platform: 'weixinMiniProgram' });
+      expect(res).not.toBeUndefined();
+    } catch (error) {
+      // ...
+    }
+  });
 });

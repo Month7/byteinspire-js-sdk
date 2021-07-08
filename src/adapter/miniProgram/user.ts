@@ -107,7 +107,7 @@ export default class UserModule extends Module {
       };
       return Object.assign(originData, data.data);
     } catch (e) {
-      if (e.response && e.response.data) {
+      if (e.response && e.response.data && e.response.data.error) {
         throw new Error(e.response.data.error);
       }
       throw e;

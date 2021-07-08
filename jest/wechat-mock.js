@@ -44,6 +44,21 @@ wx.getUserInfo = ({ success }) => {
   });
 };
 
+wx.getSetting = ({ success, fail }) => {
+  try {
+    const res = {
+      authSetting: {
+        'scope.userInfo': true
+      }
+    };
+    // eslint-disable-next-line no-unused-expressions
+    success && success(res);
+  } catch (error) {
+    // eslint-disable-next-line no-unused-expressions
+    fail && fail(error);
+  }
+};
+
 wx.request = async (args) => {
   const { success, fail } = args;
   try {
@@ -56,11 +71,16 @@ wx.request = async (args) => {
   }
 };
 
-wx.uploadFile = ({ success }) => {
-  // eslint-disable-next-line no-unused-expressions
-  success && success({
-    data: { url: 'url' }
-  });
+wx.uploadFile = async (args) => {
+  const { success, fail } = args;
+  try {
+    const res = await axios.request(args);
+    // eslint-disable-next-line no-unused-expressions
+    success && success(res);
+  } catch (error) {
+    // eslint-disable-next-line no-unused-expressions
+    fail && fail(error);
+  }
 };
 
 global.wx = wx;
