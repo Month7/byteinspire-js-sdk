@@ -42,10 +42,10 @@ export default class InspireCloud {
     this.configs = {
       serviceId: configs.serviceId,
       baseURL:
-        configs.baseURL ||
+        configs.baseURL
         // @ts-ignore configs.baseUrl 为了兼容开发者输错的情况
-        configs.baseUrl ||
-        getBaseURL(configs.serviceId)
+        || configs.baseUrl
+        || getBaseURL(configs.serviceId)
     };
 
     this.version = version;
