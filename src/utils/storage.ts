@@ -1,6 +1,4 @@
 import BrowserClass from '../adapter/browser/storage';
-import MiniProgramClass from '../adapter/miniProgram/storage';
-import NodeClass from '../adapter/node/storage';
 import { isMiniProgram, isBrowser } from '../utils/judge-platform';
 
 interface IStorage {
@@ -15,8 +13,10 @@ class Storage {
     if (isBrowser) {
       this.instance = new BrowserClass();
     } else if (isMiniProgram) {
+      const MiniProgramClass = require('../adapter/miniProgram/storage').default;
       this.instance = new MiniProgramClass();
     } else {
+      const NodeClass = require('../adapter/node/storage').default;
       this.instance = new NodeClass();
     }
   }

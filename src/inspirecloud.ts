@@ -5,8 +5,7 @@ import { AxiosRequestConfig } from 'axios';
 import { getLocalSessionKey, generateSession, getBaseURL } from './utils/utils';
 import FileModule from './file';
 import UserModule from './user';
-import MiniProgramUserModule from './adapter/miniProgram/user';
-import BrowserUserModule from './adapter/browser/user';
+import { UserClass, FileClass } from './types/constant';
 
 const { version } = require('@package/../../package.json');
 
@@ -32,9 +31,9 @@ export default class InspireCloud {
 
   public httpInstance: Request;
 
-  public file: FileModule;
+  public file: FileClass;
 
-  public user: MiniProgramUserModule | BrowserUserModule;
+  public user: UserClass
 
   constructor(configs: Config) {
     if (!configs.serviceId) {

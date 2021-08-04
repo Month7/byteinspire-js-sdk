@@ -1,7 +1,8 @@
+/* eslint-disable no-param-reassign */
 import { Method } from 'axios';
 import base64Arraybuffer from 'base64-arraybuffer';
 import { Headers } from '../../inspirecloud';
-import { Response } from '../../types/request';
+import { Response, UploadProgressObject } from '../../types/constant';
 import getAdapter from '../../utils/adaptive';
 
 const adapter = getAdapter();
@@ -15,11 +16,10 @@ export default class Request {
     url: string;
     data?: any;
     method: Method;
+    onProgressUpdate?: UploadProgressObject
   }, baseURL: string): Promise<{ data: any; }> {
     if (!config.filePath) {
-      // eslint-disable-next-line no-param-reassign
       config.headers['x-tt-base64-encoded'] = 'true';
-      // eslint-disable-next-line no-param-reassign
       config.data = base64Arraybuffer.encode(config.data as ArrayBuffer);
       return new Promise((resolve, reject) => {
         adapter.request({
@@ -35,7 +35,7 @@ export default class Request {
       });
     }
     return new Promise((resolve, reject) => {
-      adapter.uploadFile({
+      const upoloadTask = adapter.uploadFile({
         url: baseURL + '/--mgc_file',
         filePath: config.filePath,
         name: 'file',
@@ -47,6 +47,9 @@ export default class Request {
           reject(e);
         }
       });
+      if (typeof config.onProgressUpdate === 'function') {
+        upoloadTask.onProgressUpdate(config.onProgressUpdate);
+      }
     });
   }
 

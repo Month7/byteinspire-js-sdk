@@ -2,7 +2,7 @@
   "name": "@byteinspire/js-sdk",
   "version": "0.1.0",
   "description": "inspirecloud javascript sdk",
-  "main": "./dist/inspirecloud.js",
+  "main": "./dist/node/index.js",
   "types": "./dist/node/index.d.ts",
   "keywords": [
     "inspirecloud",
@@ -19,7 +19,7 @@
     "test:mp": "jest -c jest/mp.js --env=./jest/jest-enviroment-mp.js",
     "build:node": "tsc -p tsconfig.json -d",
     "build": "npm run clean && npm run build:node && npm run build:client",
-    "build:client": "npm run clean && webpack --config webpack/common.js",
+    "build:client": "webpack --config webpack/common.js",
     "prepublishOnly": "npm run build"
   },
   "husky": {
@@ -89,5 +89,11 @@
   "bugs": {
     "url": "https://github.com/bytedance/byteinspire-js-sdk/issues"
   },
-  "homepage": "https://github.com/bytedance/byteinspire-js-sdk#readme"
+  "homepage": "https://github.com/bytedance/byteinspire-js-sdk#readme",
+  "browser": {
+    "./dist/node/index.js": "./dist/inspirecloud.js"
+  },
+  "weapp": {
+    "./dist/node/index.js": "./dist/inspirecloud.js"
+  }
 }

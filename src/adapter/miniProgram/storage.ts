@@ -1,13 +1,15 @@
-declare const wx: any;
+import getAdapter from '../../utils/adaptive';
+
+const adapter = getAdapter();
 export default class Storage {
   public setItem(key: string, value: any) {
-    wx.setStorageSync({
+    adapter.setStorageSync({
       key,
       data: value
     });
   }
 
   public getItem(key: string): any {
-    return wx.getStorageSync(key);
+    return adapter.getStorageSync(key);
   }
 }

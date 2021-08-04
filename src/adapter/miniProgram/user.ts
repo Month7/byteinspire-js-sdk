@@ -1,11 +1,6 @@
 import Module from '../../module';
 import InspireCloud from '../../inspirecloud';
-
-enum PLATFORM_ENUM {
-  FS_PROGRAM = 'feishu',
-  WX_PROGRAM = 'weixinMiniProgram',
-  TT_PROGRAM = 'bytedanceMicroapp'
-}
+import { PLATFORM_ENUM, UserResponse } from '../../types/constant';
 
 declare const wx: any;
 declare const tt: any;
@@ -95,17 +90,13 @@ export default class UserModule extends Module {
         return res;
       }
 
-      const resp = await this.inspirecloud.httpInstance.request({
+      const resp: UserResponse = await this.inspirecloud.httpInstance.request({
         url: `/users/platform?platform=${platform}`,
         data: postData,
         method: 'post'
       });
       const data = resp.data;
-      const originData = {
-        code: data.code,
-        message: data.message
-      };
-      return Object.assign(originData, data.data);
+      return data;
     } catch (e) {
       if (e.response && e.response.data && e.response.data.error) {
         throw new Error(e.response.data.error);
@@ -114,6 +105,5 @@ export default class UserModule extends Module {
     }
   }
 
-  // alias for user convenience
-  loginByOAuth = this.logInByOAuth;
+  loginByOAuth = this.logInByOAuth
 }

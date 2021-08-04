@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 const storage = require('localstorage-memory');
 const axios = require('axios');
 
@@ -28,13 +29,11 @@ let code = 'mock wx.login code';
 
 // 模拟 wx.login 函数
 wx.login = ({ success }) => {
-  // eslint-disable-next-line no-unused-expressions
   success && success({ code });
 };
 
 // 模拟 wx.getUserInfo 函数
 wx.getUserInfo = ({ success }) => {
-  // eslint-disable-next-line no-unused-expressions
   success && success({
     userInfo: 'userInfo+',
     rawData: 'rawData+',
@@ -51,10 +50,19 @@ wx.getSetting = ({ success, fail }) => {
         'scope.userInfo': true
       }
     };
-    // eslint-disable-next-line no-unused-expressions
     success && success(res);
   } catch (error) {
-    // eslint-disable-next-line no-unused-expressions
+    fail && fail(error);
+  }
+};
+
+wx.downloadFile = ({ success, fail }) => {
+  try {
+    const res = {
+      tempFilePath: '/tmp'
+    };
+    success && success(res);
+  } catch (error) {
     fail && fail(error);
   }
 };
@@ -63,10 +71,8 @@ wx.request = async (args) => {
   const { success, fail } = args;
   try {
     const res = await axios.request(args);
-    // eslint-disable-next-line no-unused-expressions
     success && success(res);
   } catch (error) {
-    // eslint-disable-next-line no-unused-expressions
     fail && fail(error);
   }
 };
@@ -75,10 +81,8 @@ wx.uploadFile = async (args) => {
   const { success, fail } = args;
   try {
     const res = await axios.request(args);
-    // eslint-disable-next-line no-unused-expressions
     success && success(res);
   } catch (error) {
-    // eslint-disable-next-line no-unused-expressions
     fail && fail(error);
   }
 };

@@ -6,7 +6,7 @@
 [![Build Status](https://github.com/bytedance/byteinspire-js-sdk/actions/workflows/test.yml/badge.svg)](https://github.com/bytedance/byteinspire-js-sdk/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-轻服务 SDK，您可以通过这个 SDK 调用轻服务中的函数和上传文件。SDK 目前支持在浏览器和 NodeJS 环境调用。
+轻服务 SDK，您可以通过这个 SDK 调用轻服务中的函数和上传文件。SDK 目前支持在浏览器、小程序和 NodeJS 环境调用。
 
 ## 安装
 
@@ -25,23 +25,26 @@ $ yarn add @byteinspire/js-sdk
 ### 浏览器引入
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/@byteinspire/js-sdk/dist/inspirecloud-browser.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@byteinspire/js-sdk/dist/inspirecloud.min.0.2.0.js"></script>
 ```
 
 ### 小程序
 
 #### 手动导入
 
-1. 点击打开 [https://unpkg.com/@byteinspire/js-sdk/dist/inspirecloud-mp.min.js](https://unpkg.com/@byteinspire/js-sdk/dist/inspirecloud-mp.min.js) 并下载 JS 文件，移动到小程序 `libs` 目录。
+1. 点击打开 [https://unpkg.com/@byteinspire/js-sdk/dist/inspirecloud.min-0.2.0.js](https://unpkg.com/@byteinspire/js-sdk/dist/inspirecloud-min-0.2.0.js) 并下载 JS 文件，移动到小程序 `libs` 目录。
 2. 在小程序中：
     ```javascript
     // 注意填写正确的相对路径
-    const InspireCloud = require('./libs/inspirecloud-mp.min.js');
+    const InspireCloud = require('./libs/inspirecloud.min-0.2.0.js');
     ```
 
-#### WePY 和 mpvue
+#### WePY,mpvue, taro 等跨端框架
 
-在 [WePY](https://tencent.github.io/wepy/) 或 [mpvue](http://mpvue.com/) 中使用 SDK 时，可以直接通过 NPM 或 YARN 来安装。参见上方 [NPM](#NPM) 或 [YARN](#YARN) 章节。
+通过 NPM 或 YARN 来安装，在引入时需要指定二级路径 
+```
+import Inspirecloud from '@byteinspire/js-sdk/dist/inspirecloud-0.2.0.js'
+```
 
 #### 配置域名白名单
 

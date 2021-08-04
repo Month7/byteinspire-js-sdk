@@ -1,10 +1,10 @@
-import MiniProgramClass from './adapter/miniProgram/user';
 import BrowserClass from './adapter/browser/user';
 import { isMiniProgram } from './utils/judge-platform';
 
-let User: (typeof BrowserClass | typeof MiniProgramClass) = BrowserClass;
+let User: any = BrowserClass;
 
 if (isMiniProgram) {
+  const MiniProgramClass = require('./adapter/miniProgram/user').default;
   User = MiniProgramClass;
 }
 

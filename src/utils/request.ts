@@ -1,5 +1,6 @@
 import { isMiniProgram } from '../utils/judge-platform';
 import { Method } from 'axios';
+import { UploadProgressHandler } from '../types/constant';
 
 type Headers = {
   [key: string]: string;
@@ -71,6 +72,7 @@ export default class Request {
     url: string;
     data?: any;
     method?: Method;
+    onProgressUpdate?: UploadProgressHandler;
   }) {
     const config = this.getRequestConfig(originConfig);
     return this.instance.upload(config, this.baseURL);

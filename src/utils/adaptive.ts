@@ -1,7 +1,10 @@
-import { Response } from '../types/request';
+import { Response, UploadTask, DownloadTask } from '../types/constant';
 interface Platform {
   request: (args: any) => Promise<Response>;
-  uploadFile: (args: any) => Promise<Response>;
+  uploadFile: (args: any) => UploadTask;
+  downloadFile: (args: any) => DownloadTask;
+  setStorageSync: (args: { key: string, data: any }) => void;
+  getStorageSync: (key: string) => any;
 }
 
 // 微信小程序

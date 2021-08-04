@@ -39,6 +39,12 @@ describe('File', () => {
     );
     expect(data).toHaveProperty('url');
   });
+  if (TEST_ENV === 'mp') {
+    test('can download file', async () => {
+      const data = await inspirecloud.file.download('url');
+      expect(data).toHaveProperty('tempFilePath');
+    });
+  }
 
   test('Can upload a chinese file name', async () => {
     expect.assertions(1);
