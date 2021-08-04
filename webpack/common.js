@@ -72,14 +72,14 @@ const common = {
 const config = merge(common, {
   mode: 'none',
   output: {
-    filename: 'inspirecloud.js'
+    filename: 'inspirecloud-0.2.0.js'
   }
 });
 
 const configMin = merge(common, {
   mode: 'production',
   output: {
-    filename: 'inspirecloud.min.js'
+    filename: 'inspirecloud.min-0.2.0.js'
   }
 });
 

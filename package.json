@@ -6,9 +6,16 @@
   "types": "./dist/node/index.d.ts",
   "keywords": [
     "inspirecloud",
+    "InspireCloud",
+    "byteinspire",
     "sdk",
     "serverless",
-    "faas"
+    "faas",
+    "qingfuwu",
+    "QINGFUWU",
+    "functions",
+    "database",
+    "storage"
   ],
   "scripts": {
     "clean": "rimraf ./dist",
@@ -24,6 +31,7 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
       "pre-push": "npm run test"
     }
@@ -45,6 +53,8 @@
   "devDependencies": {
     "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.5",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/base64-arraybuffer": "^0.1.0",
     "@types/jest": "^23.3.14",
     "@types/mime": "^2.0.0",
@@ -91,9 +101,9 @@
   },
   "homepage": "https://github.com/bytedance/byteinspire-js-sdk#readme",
   "browser": {
-    "./dist/node/index.js": "./dist/inspirecloud.js"
+    "./dist/node/index.js": "./dist/inspirecloud-0.2.0.js"
   },
   "weapp": {
-    "./dist/node/index.js": "./dist/inspirecloud.js"
+    "./dist/node/index.js": "./dist/inspirecloud-0.2.0.js"
   }
 }

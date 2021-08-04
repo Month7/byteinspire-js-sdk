@@ -7,8 +7,7 @@ import FileModule from './file';
 import UserModule from './user';
 import { UserClass, FileClass } from './types/constant';
 
-const { version } = require('@package/../../package.json');
-
+const { version } = require('../package.json');
 export type Config = {
   serviceId: string;
   baseURL?: string;
@@ -43,7 +42,7 @@ export default class InspireCloud {
     this.configs = {
       serviceId: configs.serviceId,
       baseURL:
-      configs.baseURL
+        configs.baseURL
         // @ts-ignore configs.baseUrl 为了兼容开发者输错的情况
         || configs.baseUrl
         || getBaseURL(configs.serviceId)
