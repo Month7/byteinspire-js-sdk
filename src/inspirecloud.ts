@@ -6,8 +6,8 @@ import { getLocalSessionKey, generateSession, getBaseURL } from './utils/utils';
 import FileModule from './file';
 import UserModule from './user';
 import { UserClass, FileClass } from './types/constant';
+import { version } from './utils/version';
 
-const { version } = require('../package.json');
 export type Config = {
   serviceId: string;
   baseURL?: string;
@@ -32,7 +32,7 @@ export default class InspireCloud {
 
   public file: FileClass;
 
-  public user: UserClass
+  public user: UserClass;
 
   constructor(configs: Config) {
     if (!configs.serviceId) {
