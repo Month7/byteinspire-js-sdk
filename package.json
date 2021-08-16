@@ -101,9 +101,9 @@
   },
   "homepage": "https://github.com/bytedance/byteinspire-js-sdk#readme",
   "browser": {
-    "./dist/node/index.js": "./dist/inspirecloud.min-0.2.1.js"
+    "./dist/node/index.js": "./dist/inspirecloud.min-0.2.2.js"
   },
   "weapp": {
-    "./dist/node/index.js": "./dist/inspirecloud.min-0.2.1.js"
+    "./dist/node/index.js": "./dist/inspirecloud.min-0.2.2.js"
   }
 }
