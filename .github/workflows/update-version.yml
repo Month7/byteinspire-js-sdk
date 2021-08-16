@@ -1,4 +1,4 @@
-name: Update entry file version suffix
+name: Update version
 
 on:
   push:
@@ -16,14 +16,14 @@ jobs:
         with:
           node-version: 12
 
-      - name: update package.json
+      - name: update package.json and readme
         run: node scripts/updateEntryFile.js
 
       - name: Add & Commit
         uses: EndBug/add-and-commit@v7.2.1
         with:
-          add: 'package.json'
+          add: 'package.json README.md'
           push: true
-          message: 'chore: update package.json browser & weapp entry file'
+          message: 'chore: update package.json entry file & readme'
 
 
