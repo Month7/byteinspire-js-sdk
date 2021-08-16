@@ -1,5 +1,12 @@
 # 轻服务 SDK 更新日志
 
+### [0.2.3](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.2.2...v0.2.3) (2021-08-16)
+
+
+### Bug Fixes
+
+* 修复 node 环境下无法读取最新版本的问题 ([#15](https://www.github.com/bytedance/byteinspire-js-sdk/issues/15)) ([40cee55](https://www.github.com/bytedance/byteinspire-js-sdk/commit/40cee55d8f3a0f5e8f228c2d8b1f385ef44b3fe9))
+
 ### [0.2.2](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.2.1...v0.2.2) (2021-08-13)
 
 
