@@ -1,12 +1,9 @@
-import { CLIENT_VERSION_HEADER, USER_SESSION_KEY_V2 } from './const';
 import Request from './utils/request';
-import storage from './utils/storage';
 import { AxiosRequestConfig } from 'axios';
-import { getLocalSessionKey, generateSession, getBaseURL } from './utils/utils';
+import { getLocalSessionKey, getBaseURL } from './utils/utils';
 import FileModule from './file';
 import UserModule from './user';
 import { UserClass, FileClass } from './types/constant';
-import { version } from './utils/version';
 
 export type Config = {
   serviceId: string;
@@ -25,8 +22,6 @@ export default class InspireCloud {
   public configs: Config;
 
   public localSessionKey: string;
-
-  public version: string;
 
   public httpInstance: Request;
 
@@ -48,24 +43,12 @@ export default class InspireCloud {
         || getBaseURL(configs.serviceId)
     };
 
-    this.version = version;
     this.localSessionKey = getLocalSessionKey(configs.serviceId);
 
-    let sessionToken = storage.getItem(this.localSessionKey);
-
-    if (!sessionToken) {
-      sessionToken = generateSession();
-      storage.setItem(this.localSessionKey, sessionToken);
-    }
-
     this.httpInstance = new Request({
+      serviceId: configs.serviceId,
       baseURL: this.configs.baseURL as string,
-      timeout: 30 * 1000,
-      headers: {
-        'Content-Type': 'application/json',
-        [CLIENT_VERSION_HEADER]: version,
-        [USER_SESSION_KEY_V2]: sessionToken
-      }
+      localSessionKey: this.localSessionKey
     });
 
     this.file = new FileModule(this);
@@ -79,9 +62,11 @@ export default class InspireCloud {
   ) {
     try {
       const headers = options.headers || {};
+      const timeout = options?.timeout || 30 * 1000;
       const resp = await this.httpInstance.request({
         params: {},
         method: 'POST',
+        timeout,
         ...options,
         headers,
         maxContentLength: Infinity,

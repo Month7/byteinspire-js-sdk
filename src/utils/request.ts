@@ -1,6 +1,10 @@
 import { isMiniProgram } from '../utils/judge-platform';
 import { Method } from 'axios';
 import { UploadProgressHandler } from '../types/constant';
+import storage from './storage';
+import { generateSession } from './utils';
+import { CLIENT_VERSION_HEADER, USER_SESSION_KEY_V2 } from '../const';
+import { version } from './version';
 
 type Headers = {
   [key: string]: string;
@@ -26,21 +30,23 @@ interface requestInterface {
 export default class Request {
   baseURL: string;
 
-  headers: Headers;
-
-  timeout: number;
+  localSessionKey: string;
 
   instance: requestInterface;
 
+  serviceId: string;
+
   constructor(options: {
     baseURL: string;
-    timeout: number;
-    headers: Headers;
+    serviceId: string;
+    localSessionKey: string;
   }) {
-    const { baseURL, headers = {}, timeout } = options;
+    const {
+      baseURL, serviceId, localSessionKey
+    } = options;
     this.baseURL = baseURL;
-    this.timeout = timeout;
-    this.headers = headers;
+    this.serviceId = serviceId;
+    this.localSessionKey = localSessionKey;
     if (isMiniProgram) {
       const MiniProgramClass = require('../adapter/miniProgram/http').default;
       this.instance = new MiniProgramClass();
@@ -55,12 +61,26 @@ export default class Request {
     return this.instance.request(options);
   }
 
+  private getSessionToken() {
+    let sessionToken = storage.getItem(this.localSessionKey);
+
+    if (!sessionToken) {
+      sessionToken = generateSession();
+      storage.setItem(this.localSessionKey, sessionToken);
+    }
+    return sessionToken;
+  }
+
   private getRequestConfig(originConfig: LooseObject) {
+    const baseHeaders = {
+      'Content-Type': 'application/json',
+      [CLIENT_VERSION_HEADER]: version,
+      [USER_SESSION_KEY_V2]: this.getSessionToken()
+    };
     const config = {
       ...originConfig,
       url: this.baseURL + originConfig.url,
-      headers: Object.assign(originConfig?.headers || {}, this.headers),
-      timeout: this.timeout
+      headers: Object.assign(originConfig?.headers || {}, baseHeaders)
     };
     return config;
   }

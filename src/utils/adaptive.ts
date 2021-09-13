@@ -3,7 +3,7 @@ interface Platform {
   request: (args: any) => Promise<Response>;
   uploadFile: (args: any) => UploadTask;
   downloadFile: (args: any) => DownloadTask;
-  setStorageSync: (args: { key: string, data: any }) => void;
+  setStorage: (args: { key: string, data: any }) => void;
   getStorageSync: (key: string) => any;
 }
 
