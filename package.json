@@ -1,6 +1,6 @@
 {
   "name": "@byteinspire/js-sdk",
-  "version": "0.2.3",
+  "version": "0.3.3",
   "description": "inspirecloud javascript sdk",
   "main": "./dist/node/index.js",
   "types": "./dist/node/index.d.ts",
@@ -105,9 +105,9 @@
   },
   "homepage": "https://github.com/bytedance/byteinspire-js-sdk#readme",
   "browser": {
-    "./dist/node/index.js": "./dist/inspirecloud-0.2.3.min.js"
+    "./dist/node/index.js": "./dist/inspirecloud-0.3.3.min.js"
   },
   "weapp": {
-    "./dist/node/index.js": "./dist/inspirecloud-0.2.3.min.js"
+    "./dist/node/index.js": "./dist/inspirecloud-0.3.3.min.js"
   }
 }
