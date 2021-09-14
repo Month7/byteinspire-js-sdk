@@ -4,11 +4,6 @@ const axios = require('axios');
 
 let wx = {};
 
-// 模拟 wx.setStorageSync 函数
-wx.setStorageSync = (key, value) => {
-  storage.setItem(key, value);
-};
-
 // 模拟 wx.getStorageSync 函数
 wx.getStorageSync = (key) => {
   return storage.getItem(key);
@@ -22,7 +17,10 @@ wx.getStorage = ({ key, success }) => {
 
 wx.setStorage = (key, data, success) => {
   storage.setItem(key, data);
-  return success();
+  if (success) {
+    return success();
+  }
+  return null;
 };
 
 let code = 'mock wx.login code';

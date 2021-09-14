@@ -80,8 +80,7 @@ export default class UserModule extends Module {
       if (res.code) {
         const userInfo = await this.getUserInfo(adapter, platform);
         postData.userInfo = userInfo;
-        const res2 = await this.login(adapter, allowAnonymousLogin);
-        postData.code = res2.code;
+        postData.code = res.code;
       }
       if (res.anonymousCode && res.isLogin === false) {
         postData.anonymousCode = res.anonymousCode;
@@ -97,7 +96,7 @@ export default class UserModule extends Module {
       });
       const data = resp.data;
       return data;
-    } catch (e) {
+    } catch (e: any) {
       if (e.response && e.response.data && e.response.data.error) {
         throw new Error(e.response.data.error);
       }

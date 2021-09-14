@@ -21,3 +21,10 @@ export function generateSession(): string {
 export function getBaseURL(serviceId: string): string {
   return FUNCTION_BASE_URL.replace('{serviceId}', serviceId);
 }
+
+/**
+ * @param ms number
+ */
+export const sleep = async (ms: number = 1000) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};

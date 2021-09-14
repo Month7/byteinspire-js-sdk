@@ -6,7 +6,7 @@ function updateEntryFile() {
   let body = fs.readFileSync(path, 'utf-8');
   body = body.replace(
     /\.\/dist\/inspirecloud.*\.js/g,
-    `./dist/inspirecloud.min-${version}.js`
+    `./dist/inspirecloud-${version}.min.js`
   );
   fs.writeFileSync(path, body);
 }
@@ -17,9 +17,9 @@ function updateReadme() {
   body = body
     .replace(
       /https:\/\/unpkg\.com.*?\.js/g,
-      `https://unpkg.com/@byteinspire/js-sdk@${version}/dist/inspirecloud.min-${version}.js`
+      `https://unpkg.com/@byteinspire/js-sdk@${version}/dist/inspirecloud-${version}.min.js`
     )
-    .replace(/-\d\.\d\.\d.*?\.js/g, `-${version}.js`);
+    .replace(/-\d\.\d\.\d.*?\.js/g, `-${version}.min.js`);
   fs.writeFileSync(path, body);
 }
 

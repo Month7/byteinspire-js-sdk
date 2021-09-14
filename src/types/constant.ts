@@ -8,7 +8,25 @@ export declare type Data = string | AnyObject | ArrayBuffer;
 export enum PLATFORM_ENUM {
   WX_PROGRAM = 'weixinMiniProgram',
   FS_PROGRAM = 'feishu',
-  TT_PROGRAM = 'bytedanceMicroapp'
+  TT_PROGRAM = 'bytedanceMicroapp',
+  WEIXIN = 'weixin',
+  WEIBO = 'weibo',
+  GOOGLE = 'google',
+  GITHUB = 'github',
+  QQ = 'qq',
+  Douyin = 'douyin',
+}
+
+enum PLATFORM_ENUM_TYPE {
+  'weixinMiniProgram',
+  'feishu',
+  'bytedanceMicroapp',
+  'weixin',
+  'weibo',
+  'google',
+  'github',
+  'qq',
+  'douyin',
 }
 
 /**
@@ -187,7 +205,13 @@ export interface FileClass {
 
 export interface UserClass {
   loginByOAuth: (opts: {
-    platform: string;
+    platform: keyof typeof PLATFORM_ENUM_TYPE;
     allowAnonymousLogin?: boolean;
+    mode?: string;
+    redirectURL?: string;
   }) => Promise<User>
+  logOut: () => void;
+  logout: () => void;
+  getOAuthRedirectResult: () => Promise<any>;
+  isLogin: () => Promise<boolean>;
 }

@@ -3,7 +3,7 @@ import getAdapter from '../../utils/adaptive';
 const adapter = getAdapter();
 export default class Storage {
   public setItem(key: string, value: any) {
-    adapter.setStorageSync({
+    adapter.setStorage({
       key,
       data: value
     });
