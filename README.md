@@ -36,7 +36,7 @@ $ yarn add @byteinspire/js-sdk
 2. 在小程序中：
     ```javascript
     // 注意填写正确的相对路径
-    const InspireCloud = require('./libs/inspirecloud.min-0.2.3.min.js');
+    const InspireCloud = require('./libs/inspirecloud-0.2.3.min.js');
     ```
 
 #### WePY,mpvue, taro 等跨端框架

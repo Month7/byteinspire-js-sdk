@@ -3,16 +3,13 @@ import Module from '../../module';
 import InspireCloud from '../../inspirecloud';
 import { generateSession } from '../../utils/utils';
 import storage from '../../utils/storage';
+import { sleep } from '../../utils/utils';
 const RETEY_TIMES = 60 * 10;
 
 export default class UserModule extends Module {
   constructor(inspirecloud: InspireCloud) {
     super(inspirecloud);
     this.name = 'user';
-  }
-
-  private async sleep(ms: number = 1000) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   private async fetchOAuthToken(tab?: Window) {
@@ -36,7 +33,7 @@ export default class UserModule extends Module {
   }
 
   private async getSessionToken(times: number, tab: Window): Promise<any> {
-    await this.sleep();
+    await sleep();
 
     if (times > RETEY_TIMES) {
       throw new Error('Authentication failed');
