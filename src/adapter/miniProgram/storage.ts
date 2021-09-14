@@ -9,7 +9,7 @@ export default class Storage {
     });
   }
 
-  public getItem(key: string): Promise<any> {
+  public getItem(key: string): any {
     return adapter.getStorageSync(key);
   }
 }

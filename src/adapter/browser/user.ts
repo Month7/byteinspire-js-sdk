@@ -127,7 +127,6 @@ export default class UserModule extends Module {
     });
 
     const newSession = generateSession();
-    // this.inspirecloud
     storage.setItem(this.inspirecloud.localSessionKey, newSession);
   }
 
