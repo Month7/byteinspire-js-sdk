@@ -46,7 +46,7 @@ const common = {
     minimizer: [
       // new BundleAnalyzerPlugin(), // 打包后可查看各种包大小
       new UglifyJsPlugin({
-        include: /\.min-.*\.js$/,
+        include: /inspirecloud-.*\.min\.js/g,
         uglifyOptions: {
           compress: {
             // 在UglifyJs删除没有用到的代码时不输出警告
@@ -80,7 +80,7 @@ const config = merge(common, {
 const configMin = merge(common, {
   mode: 'production',
   output: {
-    filename: `inspirecloud.min-${version}.js`
+    filename: `inspirecloud-${version}.min.js`
   }
 });
 
