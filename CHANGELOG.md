@@ -1,5 +1,17 @@
 # 轻服务 SDK 更新日志
 
+### [0.3.3](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.2.3...v0.3.3) (2021-09-14)
+
+
+### Features
+
+* 支持多平台 oauth 登录
+
+### Bug Fixes
+
+* fix ts 类型错误 ([fcdc0bb](https://www.github.com/bytedance/byteinspire-js-sdk/commit/fcdc0bb492bfb4da5a42fb59bf2c3d56bc7db400))
+* 小程序 setStorage 语法错误 ([b192f79](https://www.github.com/bytedance/byteinspire-js-sdk/commit/b192f7993b025c477e0a63d81a7cef4256bd4b40))
+
 ### [0.2.3](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.2.2...v0.2.3) (2021-08-16)
 
 
