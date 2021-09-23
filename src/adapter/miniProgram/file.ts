@@ -2,7 +2,7 @@ import { getType } from 'mime';
 
 import Module from '../../module';
 import InspireCloud, { Headers } from '../../inspirecloud';
-import filePreprocesser from '../../utils/file-preprocesser';
+import filePreprocesser from './file/file-preprocesser-mp';
 
 import { MAX_FILE_SIZE } from '../../const';
 import {

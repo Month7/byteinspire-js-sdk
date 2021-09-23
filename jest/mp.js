@@ -10,5 +10,14 @@ module.exports = {
   testMatch: ['**/test/**/*.test.ts'],
   setupFiles: [
     '<rootDir>/jest/wechat-mock.js'
-  ]
+  ],
+  coverageThreshold: {
+    ...(common.coverageThreshold),
+    './src/adapter/miniProgram/': {
+      branches: 60,
+      functions: 60,
+      lines: 60,
+      statements: 60
+    }
+  }
 };

@@ -1,6 +1,6 @@
 import base64Arraybuffer from 'base64-arraybuffer';
 
-import { MAX_FILE_SIZE } from '../const';
+import { MAX_FILE_SIZE } from '../../../const';
 
 function createWithFileObj(file: Blob): Promise<any> {
   return new Promise((resolve, reject) => {
