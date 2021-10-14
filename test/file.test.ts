@@ -41,7 +41,7 @@ describe('File', () => {
   });
   if (TEST_ENV === 'mp') {
     test('can download file', async () => {
-      const data = await inspirecloud.file.download('url');
+      const data = await inspirecloud.file.download('url', { onProgressUpdate: () => {} });
       expect(data).toHaveProperty('tempFilePath');
     });
   }
@@ -68,6 +68,19 @@ describe('File', () => {
       expect(data).toHaveProperty('url');
     });
   }
+
+  test('Can not upload when missing token', async () => {
+    try {
+      await inspirecloud.file.upload(
+        'test_base64.txt',
+        'SGVsbG8gV29ybGQ=',
+        // @ts-ignore
+        {}
+      );
+    } catch (error) {
+      expect(error).toEqual(new Error('Please specify token to invoke upload'));
+    }
+  });
 
   test('Can upload an ArrayBuffer', async () => {
     expect.assertions(1);

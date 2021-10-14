@@ -14,7 +14,7 @@ export default class UserModule extends Module {
 
   private async fetchOAuthToken(tab?: Window) {
     const url = '/oauth/status';
-    const response = await this.inspirecloud.httpInstance.request({
+    const response = await this.inspirecloud.userHttpInstance.request({
       url,
       method: 'GET'
     });
@@ -66,7 +66,7 @@ export default class UserModule extends Module {
     } = opts;
 
     try {
-      const res = await this.inspirecloud.httpInstance.request({
+      const res = await this.inspirecloud.userHttpInstance.request({
         url: '/oauth/redirectUrl',
         method: 'GET',
         params: {
@@ -107,7 +107,7 @@ export default class UserModule extends Module {
 
   async isLogin() {
     try {
-      const res = await this.inspirecloud.httpInstance.request({
+      const res = await this.inspirecloud.userHttpInstance.request({
         url: '/v1/users/isLogin',
         method: 'GET'
       });
@@ -117,8 +117,8 @@ export default class UserModule extends Module {
     }
   }
 
-  logOut() {
-    this.inspirecloud.httpInstance.request({
+  async logOut() {
+    await this.inspirecloud.userHttpInstance.request({
       url: '/v1/users/logout',
       method: 'POST'
     });

@@ -1,6 +1,6 @@
 import Request from './utils/request';
 import { AxiosRequestConfig } from 'axios';
-import { getLocalSessionKey, getBaseURL } from './utils/utils';
+import { getLocalSessionKey, getBaseURL, getUserOAuthBaseURL } from './utils/utils';
 import FileModule from './file';
 import UserModule from './user';
 import { UserClass, FileClass } from './types/constant';
@@ -25,6 +25,8 @@ export default class InspireCloud {
 
   public httpInstance: Request;
 
+  public userHttpInstance: Request;
+
   public file: FileClass;
 
   public user: UserClass;
@@ -48,6 +50,13 @@ export default class InspireCloud {
     this.httpInstance = new Request({
       serviceId: configs.serviceId,
       baseURL: this.configs.baseURL as string,
+      localSessionKey: this.localSessionKey
+    });
+
+    this.userHttpInstance = new Request({
+      serviceId: configs.serviceId,
+      // @ts-ignore
+      baseURL: configs.baseURL || configs.baseUrl || getUserOAuthBaseURL(configs.serviceId),
       localSessionKey: this.localSessionKey
     });
 

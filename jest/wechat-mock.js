@@ -85,4 +85,21 @@ wx.uploadFile = async (args) => {
   }
 };
 
+let tt = {
+  ...wx
+};
+
+tt.login = ({ success, force = true }) => {
+  if (success && force === false) {
+    success({
+      isLogin: false,
+      anonymousCode: 'mock tt anonymousCode'
+    });
+  }
+  if (success && force) {
+    success({ code: 'mock tt code' });
+  }
+};
+
 global.wx = wx;
+global.tt = tt;

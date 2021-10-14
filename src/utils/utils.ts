@@ -7,7 +7,8 @@ try {
 import {
   FUNCTION_BASE_URL,
   LOCAL_SESSION_KEY,
-  LOCAL_KEY_PREFIX
+  LOCAL_KEY_PREFIX,
+  USER_BASE_URL
 } from '../const';
 
 export function getLocalSessionKey(serviceId: string) {
@@ -20,6 +21,10 @@ export function generateSession(): string {
 
 export function getBaseURL(serviceId: string): string {
   return FUNCTION_BASE_URL.replace('{serviceId}', serviceId);
+}
+
+export function getUserOAuthBaseURL(serviceId: string): string {
+  return USER_BASE_URL.replace('{serviceId}', serviceId);
 }
 
 /**
