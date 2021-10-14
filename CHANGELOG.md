@@ -1,5 +1,12 @@
 # 轻服务 SDK 更新日志
 
+## [0.4.0](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.3.3...v0.4.0) (2021-10-14)
+
+
+### Features
+
+* 用户系统相关的请求使用单独的域名 ([#25](https://www.github.com/bytedance/byteinspire-js-sdk/issues/25)) ([e8efb29](https://www.github.com/bytedance/byteinspire-js-sdk/commit/e8efb29b432b35a355afd91fa1d78f62704e1bab))
+
 ### [0.3.3](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.2.3...v0.3.3) (2021-09-14)
 
 
