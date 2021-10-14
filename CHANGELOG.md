@@ -1,5 +1,12 @@
 # 轻服务 SDK 更新日志
 
+### [0.4.1](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.4.0...v0.4.1) (2021-10-14)
+
+
+### Bug Fixes
+
+* 修复用户系统请求host参数错误的问题 ([#27](https://www.github.com/bytedance/byteinspire-js-sdk/issues/27)) ([62247fa](https://www.github.com/bytedance/byteinspire-js-sdk/commit/62247fa18da2bae3a3e31380251f7733f3c6813d))
+
 ## [0.4.0](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.3.3...v0.4.0) (2021-10-14)
 
 
