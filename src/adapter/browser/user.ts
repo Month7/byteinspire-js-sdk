@@ -73,7 +73,7 @@ export default class UserModule extends Module {
           platform,
           mode,
           redirectURL,
-          host: this.inspirecloud.configs.baseURL
+          host: this.inspirecloud.configs.userBaseURL
         },
         withCredentials: true
       });

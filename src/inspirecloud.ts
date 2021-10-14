@@ -8,6 +8,7 @@ import { UserClass, FileClass } from './types/constant';
 export type Config = {
   serviceId: string;
   baseURL?: string;
+  userBaseURL?: string;
 };
 
 export type Headers = {
@@ -42,7 +43,9 @@ export default class InspireCloud {
         configs.baseURL
         // @ts-ignore configs.baseUrl 为了兼容开发者输错的情况
         || configs.baseUrl
-        || getBaseURL(configs.serviceId)
+        || getBaseURL(configs.serviceId),
+      // @ts-ignore
+      userBaseURL: configs.baseURL || configs.baseUrl || getUserOAuthBaseURL(configs.serviceId)
     };
 
     this.localSessionKey = getLocalSessionKey(configs.serviceId);
@@ -56,7 +59,7 @@ export default class InspireCloud {
     this.userHttpInstance = new Request({
       serviceId: configs.serviceId,
       // @ts-ignore
-      baseURL: configs.baseURL || configs.baseUrl || getUserOAuthBaseURL(configs.serviceId),
+      baseURL: this.configs.userBaseURL,
       localSessionKey: this.localSessionKey
     });
 
