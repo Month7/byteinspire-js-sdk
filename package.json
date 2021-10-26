@@ -109,5 +109,8 @@
   },
   "weapp": {
     "./dist/node/index.js": "./dist/inspirecloud-0.4.1.min.js"
-  }
+  },
+  "files": [
+    "dist/"
+  ]
 }
