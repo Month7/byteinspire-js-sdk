@@ -4,7 +4,8 @@ module.exports = {
   ...common,
   globals: {
     NODE_ENV: 'test',
-    TEST_ENV: 'node'
+    TEST_ENV: 'node',
+    tt: {} // 测试 Node 环境存在 tt 环境变量时能否判断成功
   },
   coverageThreshold: {
     ...(common.coverageThreshold),

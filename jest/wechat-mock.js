@@ -103,3 +103,4 @@ tt.login = ({ success, force = true }) => {
 
 global.wx = wx;
 global.tt = tt;
+global.setImmediate = undefined;
