@@ -1,5 +1,12 @@
 # 轻服务 SDK 更新日志
 
+### [0.4.2](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.4.1...v0.4.2) (2021-11-18)
+
+
+### Bug Fixes
+
+* 修复在浏览器和 Node 环境中存在全局变量 `wx` 或 `tt` 时 sdk 错误判断为小程序环境的问题 ([#31](https://www.github.com/bytedance/byteinspire-js-sdk/issues/31)) ([68f8342](https://www.github.com/bytedance/byteinspire-js-sdk/commit/68f8342197c41391c9371672d82629d516748bfc))
+
 ### [0.4.1](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.4.0...v0.4.1) (2021-10-14)
 
 

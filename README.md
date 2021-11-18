@@ -25,25 +25,25 @@ $ yarn add @byteinspire/js-sdk
 ### 浏览器引入
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/@byteinspire/js-sdk@0.4.1/dist/inspirecloud-0.4.1.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@byteinspire/js-sdk@0.4.2/dist/inspirecloud-0.4.2.min.js"></script>
 ```
 
 ### 小程序
 
 #### 手动导入
 
-1. 点击打开 [https://unpkg.com/@byteinspire/js-sdk@0.4.1/dist/inspirecloud-0.4.1.min.js](https://unpkg.com/@byteinspire/js-sdk@0.4.1/dist/inspirecloud-0.4.1.min.js) 并下载 JS 文件，移动到小程序 `libs` 目录。
+1. 点击打开 [https://unpkg.com/@byteinspire/js-sdk@0.4.2/dist/inspirecloud-0.4.2.min.js](https://unpkg.com/@byteinspire/js-sdk@0.4.2/dist/inspirecloud-0.4.2.min.js) 并下载 JS 文件，移动到小程序 `libs` 目录。
 2. 在小程序中：
     ```javascript
     // 注意填写正确的相对路径
-    const InspireCloud = require('./libs/inspirecloud-0.4.1.min.js');
+    const InspireCloud = require('./libs/inspirecloud-0.4.2.min.js');
     ```
 
 #### WePY,mpvue, taro 等跨端框架
 
 通过 NPM 或 YARN 来安装，在引入时需要指定二级路径 
 ```
-import Inspirecloud from '@byteinspire/js-sdk/dist/inspirecloud-0.4.1.min.js'
+import Inspirecloud from '@byteinspire/js-sdk/dist/inspirecloud-0.4.2.min.js'
 ```
 
 #### 配置域名白名单
