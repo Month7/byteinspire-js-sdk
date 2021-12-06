@@ -1,6 +1,10 @@
-export const isBrowser = (function isBrowser() {
-  if (typeof window !== 'undefined' && typeof document !== 'undefined' && typeof Blob !== 'undefined') return true;
-  return false;
+export const isBrowser = (function () {
+  try {
+    // eslint-disable-next-line no-undef
+    return globalThis === window;
+  } catch (error) {
+    return false;
+  }
 }());
 
 export const isNode = (function isNode() {
