@@ -1,5 +1,12 @@
 # 轻服务 SDK 更新日志
 
+### [0.4.3](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.4.2...v0.4.3) (2021-12-06)
+
+
+### Bug Fixes
+
+* 修复未严格判断浏览器环境的问题 ([#33](https://www.github.com/bytedance/byteinspire-js-sdk/issues/33)) ([be3a6de](https://www.github.com/bytedance/byteinspire-js-sdk/commit/be3a6de1416617088176eee03d2a8d375ab6891a))
+
 ### [0.4.2](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.4.1...v0.4.2) (2021-11-18)
 
 
