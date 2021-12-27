@@ -15,6 +15,7 @@ export enum PLATFORM_ENUM {
   GITHUB = 'github',
   QQ = 'qq',
   Douyin = 'douyin',
+  FeishuApp = 'feishuApp'
 }
 
 enum PLATFORM_ENUM_TYPE {
@@ -27,6 +28,7 @@ enum PLATFORM_ENUM_TYPE {
   'github',
   'qq',
   'douyin',
+  'feishuApp'
 }
 
 /**
