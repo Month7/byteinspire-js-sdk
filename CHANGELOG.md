@@ -1,5 +1,12 @@
 # 轻服务 SDK 更新日志
 
+## [0.5.0](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.4.3...v0.5.0) (2021-12-27)
+
+
+### Features
+
+* loginByOauth方法新增对feishuApp的支持 & 更新oauth域名 ([#35](https://www.github.com/bytedance/byteinspire-js-sdk/issues/35)) ([387e702](https://www.github.com/bytedance/byteinspire-js-sdk/commit/387e70294e98f4eb4495b4b36e6651bdf30400be))
+
 ### [0.4.3](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.4.2...v0.4.3) (2021-12-06)
 
 
