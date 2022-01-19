@@ -1,9 +1,10 @@
 let nanoid: (size?: number) => string;
 try {
-  nanoid = require('nanoid');
+  nanoid = require('nanoid').nanoid;
 } catch (error) {
-  nanoid = require('nanoid/non-secure');
+  nanoid = require('nanoid/non-secure').nanoid;
 }
+
 import {
   FUNCTION_BASE_URL,
   LOCAL_SESSION_KEY,

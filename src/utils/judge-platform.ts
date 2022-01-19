@@ -8,7 +8,8 @@ export const isBrowser = (function () {
 }());
 
 export const isNode = (function isNode() {
-  if (typeof global !== 'undefined' && typeof global.setImmediate !== 'undefined') return true;
+  // eslint-disable-next-line no-undef
+  if (typeof global !== 'undefined' && typeof global.setImmediate !== 'undefined' && typeof globalThis !== 'undefined' && globalThis === global) return true;
   return false;
 }());
 
