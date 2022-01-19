@@ -1,5 +1,12 @@
 # 轻服务 SDK 更新日志
 
+### [0.5.1](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.5.0...v0.5.1) (2022-01-19)
+
+
+### Bug Fixes
+
+* 修复字节小程序中无法正确区分Node和小程序环境的问题 ([#38](https://www.github.com/bytedance/byteinspire-js-sdk/issues/38)) ([46013a0](https://www.github.com/bytedance/byteinspire-js-sdk/commit/46013a0bf58c18c87e31e48855f5496580624e40))
+
 ## [0.5.0](https://www.github.com/bytedance/byteinspire-js-sdk/compare/v0.4.3...v0.5.0) (2021-12-27)
 
 
